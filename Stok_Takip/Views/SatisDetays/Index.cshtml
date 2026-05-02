@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Stok_Takip.Models.SatisDetay>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UrunId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Miktari)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birim_Fiyati)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.satislar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miktari)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birim_Fiyati)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.satislar.Satislar_Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SatisDetay_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SatisDetay_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SatisDetay_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
