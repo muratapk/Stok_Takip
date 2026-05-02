@@ -23,6 +23,7 @@ namespace Stok_Takip.Models
         //bir ürünün birden çok stok stokhareketi olabilir
         public List<AlisDetay>? AlisDetays { get; set; } = new List<AlisDetay>();
         public List<SatisDetay>? SatisDetays { get;set; } = new List<SatisDetay>();
+        public List<Resimler>? Resimlers { get; set; }=new List<Resimler>();
 
     }
 }

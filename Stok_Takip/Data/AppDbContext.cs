@@ -10,15 +10,16 @@ namespace Stok_Takip.Data
         {
 
         }
-        public DbSet<Alis> Alis {  get; set; }
-        public DbSet<AlisDetay> AlisDetay { get; set; }
-        public DbSet<Kategoriler> Kategorilers { get; set; }    
-        public DbSet<Musteriler> Musterilers { get; set; }
-        public DbSet<SatisDetay> SatisDetay { get;set; }    
-        public DbSet<Satislar> SatisSatislar { get; set; }
-        public DbSet<StokHareketleri>StokHareketleris   { get; set; }
-        public DbSet<Tedarikci>Tedarikcis { get; set; } 
-        public DbSet<Urunler>Urunlers { get; set; }
+        public DbSet<Alis>? Alis {  get; set; }
+        public DbSet<AlisDetay>? AlisDetay { get; set; }
+        public DbSet<Kategoriler>? Kategorilers { get; set; }    
+        public DbSet<Musteriler>? Musterilers { get; set; }
+        public DbSet<SatisDetay>? SatisDetay { get;set; }    
+        public DbSet<Satislar>? SatisSatislar { get; set; }
+        public DbSet<StokHareketleri>?StokHareketleris   { get; set; }
+        public DbSet<Tedarikci> ? Tedarikcis { get; set; } 
+        public DbSet<Urunler> ? Urunlers { get; set; }
+        public DbSet<Resimler> ? Resimlers { get; set; }
 
     }
 }
