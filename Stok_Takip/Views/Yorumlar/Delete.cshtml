@@ -1,0 +1,14 @@
+﻿@model Stok_Takip.Models.Yorumlar
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Delete</h1>
+<h2>Bu Kaydı Silmek İstiyor musunuz?</h2>
+
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="YorumlarId"/>
+    <input type="submit" value="Silme" class="btn btn-danger"/>
+    <a asp-action="Index" asp-controller="Yorumlar" class="btn btn-warning">İptal</a>
+</form>

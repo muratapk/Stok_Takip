@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Stok_Takip.Models.Yorumlar>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Yorumlar</h1>
+@{
+    if(TempData["Mesaj"]!=null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Mesaj"]
+        </div>
+    }
+    if(TempData["Kayit"]!=null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Kayit"]
+        </div>
+    }
+}
+
+<a asp-controller="Yorumlar" class="btn btn-primary" asp-action="Create">Yeni Kayıt</a>
+<table class="table table-striped table-hover">
+
+    <thead>
+        <tr>
+            <th>Yorum No</th>
+            <th>Yorum Yapan</th>
+            <th>Yorum Açıklaması</th>
+            <th>Urun No</th>
+            <th>Güncelle ve Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.YorumlarId</td>
+                <td>@item.YorumYapan</td>
+                <td>@item.Aciklama</td>
+                <td>@item.Urun_Id</td>
+                <td>
+                 <a class="btn btn-success" asp-controller="Yorumlar" asp-action="Edit" asp-route-id="@item.YorumlarId">Düzelt</a>
+
+                 <a class="btn btn-danger" asp-controller="Yorumlar" asp-action="Delete" asp-route-id="@item.YorumlarId" onclick="return confirm('Bu Kaydı Silmek İstiyor musunuz?')">Silme</a>
+                </td>
+            </tr>
+        }
+       
+    </tbody>
+</table>
+

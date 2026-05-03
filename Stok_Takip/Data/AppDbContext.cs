@@ -20,6 +20,7 @@ namespace Stok_Takip.Data
         public DbSet<Tedarikci> ? Tedarikcis { get; set; } 
         public DbSet<Urunler> ? Urunlers { get; set; }
         public DbSet<Resimler> ? Resimlers { get; set; }
+        public DbSet<Yorumlar>? Yorumlar { get;set; }
 
     }
 }

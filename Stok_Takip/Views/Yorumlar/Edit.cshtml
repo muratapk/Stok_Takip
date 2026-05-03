@@ -1,0 +1,29 @@
+﻿@model Stok_Takip.Models.Yorumlar
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="YorumlarId"/>
+    <div class="form-group">
+        <label asp-for="YorumYapan" class="control-label">Yorum Yapan</label>
+        <input type="text" asp-for="YorumYapan" class="form-control" />
+        <span asp-validation-for="YorumYapan" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Aciklama" class="control-label">Açıklama</label>
+        <input asp-for="Aciklama" class="form-control" />
+        <span asp-validation-for="Aciklama" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Urun_Id" class="control-label">Ürün Adı</label>
+        <select asp-for="Urun_Id" asp-items="ViewBag.UrunListe" class="form-control"></select>
+        <span asp-validation-for="Urun_Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Kayıt Et" class="btn btn-warning" />
+    </div>
+</form>

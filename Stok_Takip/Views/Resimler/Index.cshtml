@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Stok_Takip.Models.Resimler>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Index</h1>
+@{
+    if(TempData["Mesaj"]!=null)
+    {
+        <h1>@TempData["Mesaj"]</h1>
+    }
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim_Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim_Yolu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Urun_Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resim_Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resim_Yolu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Urun_Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Resim_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Resim_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Resim_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
