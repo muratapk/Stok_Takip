@@ -38,6 +38,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Resim_Yolu)
+                @{
+                    if(item.Resim_Yolu==null)
+                    {
+                        <img src="~/Product_Images/resim-yok.png" width="100px" height="100px"/>
+                    }
+                    else
+                        {
+                            <img src="@item.Resim_Yolu" width="100px" height="100px" />
+                        }
+                    }
+               
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Urun_Id)

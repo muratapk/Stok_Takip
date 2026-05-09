@@ -11,7 +11,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <!--encytype=multipart/form-data upload yüklemek için kullanılan yapı bu
+            bu olmadan resim yükleyemeyiz
+            -->
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Resim_Ad" class="control-label"></label>
@@ -19,9 +22,9 @@
                 <span asp-validation-for="Resim_Ad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Resim_Yolu" class="control-label"></label>
-                <input asp-for="Resim_Yolu" class="form-control" />
-                <span asp-validation-for="Resim_Yolu" class="text-danger"></span>
+                <label asp-for="Images" class="control-label"></label>
+                <input type="file" asp-for="Images" class="form-control" />
+                <span asp-validation-for="Images" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Urun_Id" class="control-label"></label>
