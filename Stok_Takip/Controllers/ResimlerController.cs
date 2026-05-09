@@ -74,7 +74,8 @@ namespace Stok_Takip.Controllers
                 return NotFound();
             }
             bul.Resim_Ad = resimler.Resim_Ad;
-            bul.Resim_Yolu = resimler.Resim_Yolu;
+            //bul.Resim_Yolu = resimler.Resim_Yolu;
+            //yukarıdaki kodu resim güncelleme kısmında kullanmak istemediğim için yorum satırı yaptım.
             bul.Urun_Id = resimler.Urun_Id;
             _context.Resimlers.Update(bul);
             _context.SaveChanges();

@@ -19,11 +19,14 @@
                 <input asp-for="Resim_Ad" class="form-control" />
                 <span asp-validation-for="Resim_Ad" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Resim_Yolu" class="control-label"></label>
-                <input asp-for="Resim_Yolu" class="form-control" />
-                <span asp-validation-for="Resim_Yolu" class="text-danger"></span>
+                <img src="@Model.Resim_Yolu" width="100px" height="100px"/>
+                <label asp-for="Images" class="control-label"></label>
+                <input type="file" asp-for="Images" class="form-control" />
+                <span asp-validation-for="Images" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Urun_Id" class="control-label"></label>
                 <select asp-for="Urun_Id" class="form-control" asp-items="ViewBag.Urunliste">Seçiminiz</select>

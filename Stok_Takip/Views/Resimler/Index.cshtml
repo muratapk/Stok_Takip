@@ -39,9 +39,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Resim_Yolu)
                 @{
-                    if(item.Resim_Yolu==null)
+                    if(item.Resim_Yolu==null || String.IsNullOrEmpty(item.Resim_Yolu))
                     {
-                        <img src="~/Product_Images/resim-yok.png" width="100px" height="100px"/>
+                        <img src="~/Product_Images/Default.png" width="100px" height="100px"/>
                     }
                     else
                         {
