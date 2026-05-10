@@ -10,8 +10,12 @@ namespace Stok_Takip.Models
         public  int Resim_Id  { get; set; }
         public string Resim_Ad { get;set; }=string.Empty;
         public string Resim_Yolu { get; set; }=string.Empty;
-        [ForeignKey("Urun_Id")]
+
+    
         public int Urun_Id { get; set; }
+
+
+        [ForeignKey("Urun_Id")]
         public Urunler ? Urunler { get; set; }
         //? soru işareti boş değer kabul edilebilir
         [NotMapped]

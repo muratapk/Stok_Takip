@@ -1,0 +1,28 @@
+﻿@model Stok_Takip.Models.Urunler
+@{
+    ViewData["Title"] = "UrunDetay";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <hr/>
+            <h2 class="text-center mb-3">@Model.Urun_Adi</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <img src="" class="img-fluid" alt="@Model.Urun_Adi" />
+        </div>
+        <div class="col-6">
+            <h3>Ürün Detayları</h3>
+            <p><strong>Fiyat:</strong> @Model.Satis_Fiyati</p>
+            <p><strong>Stok Miktarı:</strong> @Model.Stok_Miktari</p>
+            <p><strong>Açıklama:</strong> @Model.Minumum_Miktari</p>
+        </div>
+    </div>
+
+</div>
+

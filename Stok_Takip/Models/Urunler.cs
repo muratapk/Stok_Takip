@@ -14,11 +14,13 @@ namespace Stok_Takip.Models
         public decimal ? Satis_Fiyati { get; set; }
         public int ? Stok_Miktari { get; set; }
         public int ? Minumum_Miktari { get; set; }
-
+        public string Urun_Resim { get; set; } = string.Empty;
         [ForeignKey("Kategori_Id")]
         public Kategoriler ? kategoriler { get; set; }
         //ürünler tablosu sadece bir kategori verisi alabiir
         //kategori id forekey ikinci anahtar 
+        [NotMapped]
+        public IFormFile ? Images { get; set; }
         public List<StokHareketleri> StokHareketleris { get; set; } = new List<StokHareketleri>();
         //bir ürünün birden çok stok stokhareketi olabilir
         public List<AlisDetay>? AlisDetays { get; set; } = new List<AlisDetay>();

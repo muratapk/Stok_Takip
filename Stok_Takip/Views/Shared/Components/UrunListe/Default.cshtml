@@ -19,20 +19,33 @@
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
-                                <a href="" class="option1">
+                                <a href="/Home/UrunDetay/@item.Urun_Id" class="option1">
                                     @item.Urun_Adi
+
                                 </a>
                                 <a href="" class="option2">
                                     Satın Al
                                 </a>
+                              <a asp-action="Kategoriler" asp-controller="Home" asp-route-id="@item.Kategori_Id" class="option1">
+                                    @item.Kategori_Id
+                                </a>
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="images/p1.png" alt="">
+                            @if (item.Resimlers != null && item.Resimlers.Any())
+                            {
+                                <img src="@item.Resimlers.First().Resim_Yolu" />
+                            }
+                            else
+                            {
+                                <img src="~/Product_Images/Default.png" />
+                            }
+
                         </div>
                         <div class="detail-box">
                             <h5>
                                 @item.Urun_Adi
+                              
                             </h5>
                             <h6>
                                 @item.Satis_Fiyati

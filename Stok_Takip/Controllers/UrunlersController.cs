@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stok_Takip.Data;
 using Stok_Takip.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Stok_Takip.Controllers
 {
@@ -57,8 +58,37 @@ namespace Stok_Takip.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Urun_Id,Urun_Adi,Kategori_Id,Barkod,Alis_Fiyati,Satis_Fiyati,Stok_Miktari,Minumum_Miktari")] Urunler urunler)
+        public async Task<IActionResult> Create([Bind("Urun_Id,Urun_Adi,Kategori_Id,Barkod,Alis_Fiyati,Satis_Fiyati,Stok_Miktari,Minumum_Miktari")] Urunler urunler,IFormFile Images)
         {
+
+            if (Images != null)
+            {
+                //Path.getExtension(Images.FileName) ile resmin uzantısını alıyoruz
+                //Guid.NewGuid().ToString() ile benzersiz bir dosya adı oluşturuyoruz
+                var dosyaAdi = Guid.NewGuid().ToString() + Path.GetExtension(Images.FileName);
+                //Images.FileName Dosya Adını alır
+                //Images.Length dosya boyutunu alır
+                //Images.Type dosya türünü alır
+                //benzersiz dosya adını dosyadi kaydet
+                //Path.Combine ile dosya yolunu oluşturuyoruz. Directory.GetCurrentDirectory() ile projenin kök dizinini alıyoruz, ardından "wwwroot/Product_Images" klasörünü ve dosya adını ekliyoruz
+                var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Product_Images", dosyaAdi);
+                //using var ile dosya akışını açıyoruz ve dosyayı oluşturuyoruz. FileMode.Create, dosya zaten varsa üzerine yazılmasını sağlar
+                using (var stream = new FileStream(dosyaYolu, FileMode.Create))
+                {
+                    Images.CopyTo(stream);
+                    //CopyTo yöntemi, yüklenen dosyanın içeriğini oluşturduğumuz dosya akışına kopyalar
+                }
+                urunler.Urun_Resim = "/Urun_Resim/" + dosyaAdi;
+                //veritabanına kaydedilecek resim yolu, oluşturduğumuz benzersiz dosya adını içeren bir URL olarak ayarlanır
+
+            }
+
+
+
+
+
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(urunler);
@@ -91,8 +121,32 @@ namespace Stok_Takip.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Urun_Id,Urun_Adi,Kategori_Id,Barkod,Alis_Fiyati,Satis_Fiyati,Stok_Miktari,Minumum_Miktari")] Urunler urunler)
+        public async Task<IActionResult> Edit(int id, [Bind("Urun_Id,Urun_Adi,Kategori_Id,Barkod,Alis_Fiyati,Satis_Fiyati,Stok_Miktari,Minumum_Miktari")] Urunler urunler,IFormFile Images)
         {
+
+            if (Images != null)
+            {
+                //Path.getExtension(Images.FileName) ile resmin uzantısını alıyoruz
+                //Guid.NewGuid().ToString() ile benzersiz bir dosya adı oluşturuyoruz
+                var dosyaAdi = Guid.NewGuid().ToString() + Path.GetExtension(Images.FileName);
+                //Images.FileName Dosya Adını alır
+                //Images.Length dosya boyutunu alır
+                //Images.Type dosya türünü alır
+                //benzersiz dosya adını dosyadi kaydet
+                //Path.Combine ile dosya yolunu oluşturuyoruz. Directory.GetCurrentDirectory() ile projenin kök dizinini alıyoruz, ardından "wwwroot/Product_Images" klasörünü ve dosya adını ekliyoruz
+                var dosyaYolu = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Product_Images", dosyaAdi);
+                //using var ile dosya akışını açıyoruz ve dosyayı oluşturuyoruz. FileMode.Create, dosya zaten varsa üzerine yazılmasını sağlar
+                using (var stream = new FileStream(dosyaYolu, FileMode.Create))
+                {
+                    Images.CopyTo(stream);
+                    //CopyTo yöntemi, yüklenen dosyanın içeriğini oluşturduğumuz dosya akışına kopyalar
+                }
+                urunler.Urun_Resim = "/Urun_Resim/" + dosyaAdi;
+                //veritabanına kaydedilecek resim yolu, oluşturduğumuz benzersiz dosya adını içeren bir URL olarak ayarlanır
+
+            }
+
+
             if (id != urunler.Urun_Id)
             {
                 return NotFound();
