@@ -23,14 +23,17 @@ namespace Stok_Takip.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(LoginUserDto loginUserDto)
+        public async Task<IActionResult> Index(LoginUserDto loginUserDto)
         {
-           var result = _signInManager.PasswordSignInAsync(loginUserDto.UserEmail, loginUserDto.Password, false, false).Result;
+           var result =  _signInManager.PasswordSignInAsync(loginUserDto.UserName, loginUserDto.Password, false, false).Result;
             // PasswordSignInAsync, kullanıcıların kimlik doğrulaması için kullanılan bir yöntemdir. Bu yöntem, kullanıcının e-posta adresi ve şifresini alır ve kimlik doğrulama işlemini gerçekleştirir. Sonuç olarak, oturum açma işleminin başarılı olup olmadığını belirten bir sonuç döndürür.
              if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Home");
             }
+           
+           
+
             TempData["Mesaj"] = "Email adresi ve Şifreniz Hatalı";
 
                 return View(loginUserDto);
@@ -64,6 +67,10 @@ namespace Stok_Takip.Controllers
             TempData["Mesaj"] = "İşlem Gerçekleşmedi";
             return View(registerDto);
 
+        }
+        public IActionResult Account()
+        {
+            return View();
         }
     }
 }

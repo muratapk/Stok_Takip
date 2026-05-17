@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stok_Takip.Data;
@@ -21,6 +22,7 @@ namespace Stok_Takip.Controllers
         }
 
         // GET: Urunlers
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Urunlers.Include(u => u.kategoriler);
