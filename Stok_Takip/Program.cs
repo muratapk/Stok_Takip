@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Stok_Takip.Data;
+using Stok_Takip.Models;
 
 namespace Stok_Takip
 {
@@ -18,6 +19,9 @@ namespace Stok_Takip
                 }
                 
                 );
+            builder.Services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+            //builder.Services.AddIdentityCore<AppUser>() kullanýcý yönetimi için gerekli olan temel hizmetleri ekler. Bu, kullanýcýlarýn kimlik doðrulamasý, yetkilendirmesi ve yönetimi gibi iþlemleri gerçekleþtirmek için gereken temel iþlevselliði saðlar. Ancak, AddIdentityCore yöntemi, tam bir kimlik yönetimi sistemi saðlamaz ve genellikle özelleþtirilmiþ bir kullanýcý yönetimi sistemi oluþturmak isteyen geliþtiriciler tarafýndan kullanýlýr.
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
