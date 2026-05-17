@@ -57,6 +57,10 @@ namespace Stok_Takip.Controllers
             {
                 return Redirect("Account");
             }
+            foreach(var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
             TempData["Mesaj"] = "İşlem Gerçekleşmedi";
             return View(registerDto);
 
