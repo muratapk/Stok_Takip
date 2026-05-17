@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Admin Panel</title>
+    <style>
+        body{
+        background:#0f172a;
+        font-family:Arial;
+        color:white;
+        margin:0;
+        }
+        .sidebar{
+        width:220px;
+        height:100vh;
+        background:#111827;
+        position:fixed;
+        padding:20px;
+        }
+        .sidebar h2{
+        margin-bottom:30px;
+        }
+        .sidebar a{
+        display:block;
+        color:#cbd5e1;
+        text-decoration:none;
+        padding:12px;
+        margin-bottom:10px;
+        background:#1e293b;
+        border-radius:8px;
+        }
+        .content{
+        margin-left:260px;
+        padding:30px;
+        }
+        .card{
+        background:#1e293b;
+        padding:20px;
+        border-radius:12px;
+        margin-bottom:20px;
+        }
+        input, textarea{
+        width:100%;
+        padding:12px;
+        margin-top:10px;
+        border:none;
+        border-radius:8px;
+        }
+        button{
+        margin-top:15px;
+        padding:12px 20px;
+        border:none;
+        border-radius:8px;
+        background:#22c55e;
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>ADMIN PANEL</h2>
+
+        <a href="/Home/Index">Anasayfa</a>
+        <a href="#">Galeri</a>
+        <a href="#">Ayarlar</a>
+        <a href="#">Çıkış</a>
+    </div>
+
+    <div class="content">
+
+        <div class="card">
+            @RenderBody()
+        </div>
+
+        <div class="card">
+            <h2>Yeni İçerik Ekle</h2>
+
+            <input type="text" placeholder="Başlık">
+<textarea rows="6" placeholder="İçerik"></textarea>
+
+            <button>Kaydet</button>
+
+        </div>
+
+        <div class="card">
+            <h2>İstatistikler</h2>
+
+            <p>Toplam İçerik: 12</p>
+            <p>Toplam Görsel: 48</p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
