@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="StokApi/StokApi.csproj" Id="32e0ccd2-77e2-4fee-b923-e83b87bc5451" />
   <Project Path="Stok_Takip/Stok_Takip.csproj" />
 </Solution>
