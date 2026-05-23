@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StokApi.Models;
 
 namespace StokApi.Data
@@ -13,4 +14,6 @@ namespace StokApi.Data
         //Dbset yapısı ile sisteme tanıtıyoruz...
         //Ari_2019!
     }
+    
+   
 }
