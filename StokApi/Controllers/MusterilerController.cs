@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using StokApi.Data;
 using StokApi.Models;
@@ -24,7 +25,7 @@ namespace StokApi.Controllers
             return await _context.Musterilers.ToListAsync();
             //tüm Müsteri verilerini çekmesini istiyorum bana geri gönder 
         }
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Musteriler>>GetMusteriId(int id) 
         {
              var result=await _context.Musterilers.Where(x=>x.Musteri_Id==id).FirstOrDefaultAsync();
@@ -33,7 +34,7 @@ namespace StokApi.Controllers
 
         
         }
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Musteriler>>DeleteMusteriler(int id)
         {
             var result = await _context.Musterilers.Where(x => x.Musteri_Id == id).FirstOrDefaultAsync();
@@ -45,7 +46,7 @@ namespace StokApi.Controllers
             }
             return result;
         }
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public async Task<ActionResult<Musteriler>>PutMusteriler(Musteriler musteri,int id)
         {
             var result=await _context.Musterilers.Where(x=>x.Musteri_Id==id).FirstOrDefaultAsync();
@@ -68,5 +69,6 @@ namespace StokApi.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+        
     }
 }
